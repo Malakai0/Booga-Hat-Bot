@@ -22,15 +22,21 @@ app.get("/", (request, response) => {
     var Username = request.headers['roblox-name'];
     if (BoogaCord !== NULL && Username !== NULL){
         
-        var Valid = FALSE; // Not a twitch subscriber...
-        BoogaCord.members.forEach(member => {
-            var OwnsRole = member.roles.cache.find(TwitchSubscriberRoleID);
-            if (BoogaCord.nickname == Username && OwnsRole){
-                Valid = TRUE; // Twitch Subscriber!
-            }
-        });
+        var User = BoogaCord.members.cache.map((member) => member.nickname == Username);
 
-        response.send(Valid); // Sends response back to Roblox;
+        if (User !== NULL){
+            var OwnsRole = member.roles.cache.has(TwitchSubscriberRoleID);
+
+            if (OwnsRole){
+                response.send(TRUE); // User IS subscribed to Soybeen's Twitch.
+            }else{
+                response.send(FALSE); // User is not subscribed to Soybeen's Twitch.
+            }
+
+        }else{
+            response.send(FALSE); // User is not in Discord.
+        }
+
     }else{
         response.send(FALSE); // Not in the server or an invalid request.
     }
