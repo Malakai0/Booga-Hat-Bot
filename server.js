@@ -1,4 +1,3 @@
-// https://glitch.com/edit/#!/booga-booga-twich-communication
 const Discord = require('discord.js');
 const express = require("express");
 const fs = require('fs');
@@ -9,8 +8,6 @@ const client = new Discord.Client();
 const BoogaDiscord = "615614976916324352";
 const TwitchSubscriberRoleID = "629439055876325408";
 
-const TRUE = "true";
-const FALSE = "false";
 const NULL = undefined;
 
 client.on('ready', () => {
