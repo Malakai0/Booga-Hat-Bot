@@ -30,15 +30,16 @@ app.get("/", (request, response) => {
             if (OwnsRole){
                 response.send(TRUE); // User IS subscribed to Soybeen's Twitch.
             }else{
-                response.send(FALSE); // User is not subscribed to Soybeen's Twitch.
+                response.send(`${FALSE} - 3`); // User is not subscribed to Soybeen's Twitch.
             }
 
         }else{
-            response.send(FALSE); // User is not in Discord.
+            response.send(`${FALSE} - 2`); // User is not in Discord.
         }
 
     }else{
-        response.send(FALSE); // Not in the server or an invalid request.
+        var Code = BoogaCord === NULL ? "1" : (Username === NULL ? "1.5" : "?");
+        response.send(`${FALSE} - ${Code}`); // Not in the server or an invalid request.
     }
 });
 
