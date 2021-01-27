@@ -11,6 +11,7 @@ const TwitchSubscriberRoleID = "629439055876325408";
 
 const TRUE = "true";
 const FALSE = "false";
+const NULL = undefined;
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -19,7 +20,7 @@ client.on('ready', () => {
 app.get("/", (request, response) => {
     var BoogaCord = client.guilds.cache.get(BoogaDiscord);
     var Username = request.headers['roblox-name'];
-    if (BoogaCord !== undefined && Username !== undefined){
+    if (BoogaCord !== NULL && Username !== NULL){
         
         var Valid = FALSE; // Not a twitch subscriber...
         BoogaCord.members.forEach(member => {
