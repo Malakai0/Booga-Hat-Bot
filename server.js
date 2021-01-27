@@ -25,7 +25,7 @@ app.get("/", (request, response) => {
         var User = BoogaCord.members.cache.map((member) => member.nickname == Username);
 
         if (User !== NULL){
-            var OwnsRole = member.roles.cache.has(TwitchSubscriberRoleID);
+            var OwnsRole = User.roles.cache.has(TwitchSubscriberRoleID);
 
             if (OwnsRole){
                 response.send(TRUE); // User IS subscribed to Soybeen's Twitch.
