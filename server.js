@@ -28,18 +28,18 @@ app.get("/", (request, response) => {
             var OwnsRole = User.roles.cache.has(TwitchSubscriberRoleID);
 
             if (OwnsRole){
-                response.send(TRUE); // User IS subscribed to Soybeen's Twitch.
+                response.send(`0`); // User IS subscribed to Soybeen's Twitch.
             }else{
-                response.send(`${FALSE} - 3`); // User is not subscribed to Soybeen's Twitch.
+                response.send(`4`); // User is not subscribed to Soybeen's Twitch.
             }
 
         }else{
-            response.send(`${FALSE} - 2`); // User is not in Discord.
+            response.send(`3`); // User is not in Discord.
         }
 
     }else{
-        var Code = BoogaCord === NULL ? "1" : (Username === NULL ? "1.5" : "?");
-        response.send(`${FALSE} - ${Code}`); // Not in the server or an invalid request.
+        var Code = BoogaCord === NULL ? "1" : (Username === NULL ? "2" : "?");
+        response.send(`${Code}`); // Not in the server or an invalid request.
     }
 });
 
